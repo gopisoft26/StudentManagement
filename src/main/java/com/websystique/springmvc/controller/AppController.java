@@ -2,11 +2,9 @@ package com.websystique.springmvc.controller;
 
 import java.util.List;
 import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
@@ -23,13 +21,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 import com.websystique.springmvc.model.User;
 import com.websystique.springmvc.model.UserProfile;
 import com.websystique.springmvc.service.UserProfileService;
 import com.websystique.springmvc.service.UserService;
-
-
 
 @Controller
 @RequestMapping("/")
@@ -50,8 +45,7 @@ public class AppController {
 	
 	@Autowired
 	AuthenticationTrustResolver authenticationTrustResolver;
-	
-	
+
 	/**
 	 * This method will list all existing users.
 	 */
@@ -166,7 +160,8 @@ public class AppController {
 	 */
 	@ModelAttribute("roles")
 	public List<UserProfile> initializeProfiles() {
-		return userProfileService.findAll();
+		List<UserProfile> role =   userProfileService.findAll();
+		return role;
 	}
 	
 	/**
