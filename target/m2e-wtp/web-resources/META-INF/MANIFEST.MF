@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: StudentManagement
+Implementation-Version: 1.0.0
+Built-By: Sivakumar ARUMUGAM
+Implementation-Vendor-Id: com.person.management.app
+Build-Jdk: 1.8.0_181
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
