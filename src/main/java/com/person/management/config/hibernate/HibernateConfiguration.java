@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource(value = { "classpath:application.properties" })
-@EnableJpaRepositories("com.person.management.repository")
+//@EnableJpaRepositories("com.person.management.repository")
 public class HibernateConfiguration {
 
     @Autowired

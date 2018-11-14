@@ -1,4 +1,4 @@
-package com.person.management.dao;
+package com.person.management.repository;
 
 import java.util.Date;
 
@@ -11,15 +11,15 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.person.management.dao.AbstractDao;
 import com.person.management.entity.PersistentLogin;
+import com.person.management.repository.AbstractCrudRepository;
 
-@Repository("tokenRepositoryDao")
+@Repository
 @Transactional
-public class HibernateTokenRepositoryImpl extends AbstractDao<String, PersistentLogin>
+public class HibernateTokenRepository extends AbstractCrudRepository<String, PersistentLogin>
 		implements PersistentTokenRepository {
 
-	static final Logger logger = LoggerFactory.getLogger(HibernateTokenRepositoryImpl.class);
+	static final Logger logger = LoggerFactory.getLogger(HibernateTokenRepository.class);
 
 	@Override
 	public void createNewToken(PersistentRememberMeToken token) {

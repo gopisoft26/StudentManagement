@@ -1,4 +1,4 @@
-package com.person.management.dao;
+package com.person.management.repository;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ import com.person.management.entity.User;
 
 
 
-@Repository("userDao")
-public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
+@Repository
+public class UserRepository extends AbstractCrudRepository<Integer, User> {
 
-	static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
+	static final Logger logger = LoggerFactory.getLogger(UserRepository.class);
 	
 	public User findById(int id) {
 		User user = getByKey(id);

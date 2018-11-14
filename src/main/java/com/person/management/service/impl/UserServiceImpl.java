@@ -1,4 +1,4 @@
-package com.person.management.service;
+package com.person.management.service.impl;
 
 import java.util.List;
 
@@ -6,17 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.person.management.dao.UserDao;
 import com.person.management.entity.User;
+import com.person.management.repository.UserRepository;
+import com.person.management.service.UserService;
 
 
 @Service("userService")
 @Transactional
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UserDao dao;
+	private UserRepository dao;
 
 	@Autowired
     private PasswordEncoder passwordEncoder;

@@ -1,4 +1,4 @@
-package com.person.management.dao;
+package com.person.management.repository;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import com.person.management.entity.UserProfile;
 
 
 
-@Repository("userProfileDao")
-public class UserProfileDaoImpl extends AbstractDao<Integer, UserProfile>implements UserProfileDao{
+@Repository
+public class UserProfileRepository extends AbstractCrudRepository<Integer, UserProfile> {
 
 	public UserProfile findById(int id) {
 		return getByKey(id);

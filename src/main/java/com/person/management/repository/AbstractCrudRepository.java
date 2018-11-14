@@ -1,4 +1,4 @@
-package com.person.management.dao;
+package com.person.management.repository;
 
 import java.io.Serializable;
 
@@ -9,12 +9,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public abstract class AbstractDao<PK extends Serializable, T> {
+public abstract class AbstractCrudRepository<PK extends Serializable, T> {
 	
 	private final Class<T> persistentClass;
 	
 	@SuppressWarnings("unchecked")
-	public AbstractDao(){
+	public AbstractCrudRepository(){
 		this.persistentClass =(Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[1];
 	}
 	
