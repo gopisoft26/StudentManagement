@@ -28,7 +28,6 @@ import com.person.management.service.UserProfileService;
 import com.person.management.service.UserService;
 
 @Controller
-@RequestMapping("/")
 @SessionAttributes("roles")
 public class LoginWebController {
 
@@ -52,11 +51,10 @@ public class LoginWebController {
 	 */
 	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
 	public String listUsers(ModelMap model) {
-
-		List<User> users = userService.findAllUsers();
+		/*List<User> users = userService.findAllUsers();
 		model.addAttribute("users", users);
-		model.addAttribute("loggedinuser", getPrincipal());
-		return "userslist";
+		model.addAttribute("loggedinuser", getPrincipal());*/
+		return "login";
 	}
 
 	/**
@@ -178,15 +176,16 @@ public class LoginWebController {
 	 * This method handles login GET requests.
 	 * If users is already logged-in and tries to goto login page again, will be redirected to list page.
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginPage() {
+
+	@RequestMapping(value = "/index")
+	public String iindex() {
 		if (isCurrentAuthenticationAnonymous()) {
-			return "login";
+			return "index";
 	    } else {
 	    	return "redirect:/list";  
 	    }
 	}
-
+	
 	/**
 	 * This method handles logout requests.
 	 * Toggle the handlers if you are RememberMe functionality is useless in your app.

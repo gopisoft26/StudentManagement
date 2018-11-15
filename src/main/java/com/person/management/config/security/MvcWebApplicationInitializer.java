@@ -1,4 +1,6 @@
 package com.person.management.config.security;
+import javax.servlet.Filter;
+
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -23,6 +25,12 @@ public class MvcWebApplicationInitializer
   @Override
   protected String[] getServletMappings() {
     return new String[] { "/" };
+  }
+  
+  @Override
+  protected Filter[] getServletFilters() {
+  	Filter [] singleton = { new CORSFilter()};
+  	return singleton;
   }
 
 }
