@@ -49,14 +49,28 @@ public class LoginWebController {
 	/**
 	 * This method will list all existing users.
 	 */
-	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String listUsers(ModelMap model) {
-		/*List<User> users = userService.findAllUsers();
-		model.addAttribute("users", users);
-		model.addAttribute("loggedinuser", getPrincipal());*/
-		return "login";
+		if (isCurrentAuthenticationAnonymous()) {
+			return "login";
+	    } else {
+	    	model.addAttribute("loggedinuser", getPrincipal());
+	    	return "redirect:/list";  
+	    }
 	}
 
+	
+	@RequestMapping(value = { "/list" }, method = RequestMethod.GET)
+	public String listUlistsers(ModelMap model) {
+		List<User> users = userService.findAllUsers();
+		model.addAttribute("users", users);
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "userslist";
+	}
+
+	
+	
 	/**
 	 * This method will provide the medium to add a new user.
 	 */
@@ -177,10 +191,10 @@ public class LoginWebController {
 	 * If users is already logged-in and tries to goto login page again, will be redirected to list page.
 	 */
 
-	@RequestMapping(value = "/index")
+	@RequestMapping(value = "/login")
 	public String iindex() {
 		if (isCurrentAuthenticationAnonymous()) {
-			return "index";
+			return "login";
 	    } else {
 	    	return "redirect:/list";  
 	    }
