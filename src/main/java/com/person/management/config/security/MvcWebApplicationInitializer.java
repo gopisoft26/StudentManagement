@@ -7,6 +7,11 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 import com.person.management.app.WebConfig;
 import com.person.management.app.Webapp;
 
+/**
+ * @author Sivakumar ARUMUGAM
+ * 
+ */
+
 public class MvcWebApplicationInitializer 
       extends AbstractAnnotationConfigDispatcherServletInitializer {
 

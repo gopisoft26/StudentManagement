@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -16,7 +17,11 @@ import org.springframework.web.servlet.view.JstlView;
 
 import com.person.management.converter.RoleToUserProfileConverter;
 
-
+/**
+ * @author Sivakumar ARUMUGAM
+ * 
+ */
+@EnableWebMvc
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter{
 	
@@ -33,7 +38,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setViewClass(JstlView.class);
-		viewResolver.setPrefix("/WEB-INF/views/");
+		viewResolver.setPrefix("/WEB-INF/views/jsp-page/");
 		viewResolver.setSuffix(".jsp");
 		registry.viewResolver(viewResolver);
 	}
@@ -75,8 +80,8 @@ public class WebConfig extends WebMvcConfigurerAdapter{
         matcher.setUseRegisteredSuffixPatternMatch(true);
     }
     
-    /*
-     * enable Static resulre accss
+    /**
+     * Enable default servlet html view resolver
      */
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

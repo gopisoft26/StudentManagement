@@ -9,6 +9,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @author Sivakumar ARUMUGAM
+ * 
+ */
 
 public class CORSFilter implements Filter {
 

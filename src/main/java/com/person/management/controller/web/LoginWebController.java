@@ -21,11 +21,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 import com.person.management.entity.User;
 import com.person.management.entity.UserProfile;
 import com.person.management.service.UserProfileService;
 import com.person.management.service.UserService;
+
+
+/**
+ * @author Sivakumar ARUMUGAM
+ * 
+ */
 
 @Controller
 @SessionAttributes("roles")
@@ -50,27 +55,18 @@ public class LoginWebController {
 	 * This method will list all existing users.
 	 */
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = {"/" , "/list"},method = RequestMethod.GET)
 	public String listUsers(ModelMap model) {
 		if (isCurrentAuthenticationAnonymous()) {
 			return "login";
 	    } else {
 	    	model.addAttribute("loggedinuser", getPrincipal());
-	    	return "redirect:/list";  
+	    	List<User> users = userService.findAllUsers();
+			model.addAttribute("users", users);
+			return "userslist";
 	    }
 	}
 
-	
-	@RequestMapping(value = { "/list" }, method = RequestMethod.GET)
-	public String listUlistsers(ModelMap model) {
-		List<User> users = userService.findAllUsers();
-		model.addAttribute("users", users);
-		model.addAttribute("loggedinuser", getPrincipal());
-		return "userslist";
-	}
-
-	
-	
 	/**
 	 * This method will provide the medium to add a new user.
 	 */
@@ -191,8 +187,9 @@ public class LoginWebController {
 	 * If users is already logged-in and tries to goto login page again, will be redirected to list page.
 	 */
 
-	@RequestMapping(value = "/login")
-	public String iindex() {
+	
+	@RequestMapping(value = "/login",method = RequestMethod.GET)
+	public String get() {
 		if (isCurrentAuthenticationAnonymous()) {
 			return "login";
 	    } else {

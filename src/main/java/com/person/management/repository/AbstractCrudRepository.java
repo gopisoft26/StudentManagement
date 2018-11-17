@@ -8,6 +8,10 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+/**
+ * @author Sivakumar ARUMUGAM
+ * 
+ */
 
 public abstract class AbstractCrudRepository<PK extends Serializable, T> {
 	

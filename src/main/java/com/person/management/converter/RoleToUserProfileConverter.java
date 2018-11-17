@@ -10,6 +10,7 @@ import com.person.management.entity.UserProfile;
 import com.person.management.service.UserProfileService;
 
 /**
+ * @author Sivakumar ARUMUGAM
  * A converter class used in views to map id's to actual userProfile objects.
  */
 @Component
